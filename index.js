@@ -90,9 +90,7 @@ const ListOfRecipeWords = {
     "match_by_name": newMaped().sort()
 }
 
-console.log(ListOfRecipeWords)  
-
-// keyWordFind()
+// console.log(ListOfRecipeWords)  
 
 
 // Display what is unique and the length
