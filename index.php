@@ -1,9 +1,17 @@
 <?php
 require("Processor.php");
+header('Access-Control-Allow-Origin: *');
 $data_reference = file_get_contents("data.json");
 $data = json_decode($data_reference, true);
 
 $processor = new Processor($data);
+
+if (isset($_FILES)) {
+    if (move_uploaded_file($_FILES['uploaded_file']['tmp_name'], 'data.json')) {
+        echo  json_encode(array("flag" => true, "message" => "The file " .  basename($_FILES['uploaded_file']['name']) .
+            " has been uploaded"));
+    }
+}
 
 if (isset($_GET['endpoint'])) {
 
