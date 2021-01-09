@@ -38,7 +38,7 @@ if (isset($_GET['endpoint'])) {
     <li>   <a href="' . $base_url . 'count_per_recipe">Get count per recipe</a> </li>  
     <li>   <a href="' . $base_url . 'unique_recipe_count">Get total of unique recipes</a></li> 
     <li>   <a href="' . $base_url . 'busiest_postcode">Get busiest postcode</a></li> 
-    <li>   <a href="' . $base_url . 'match_by_name&name=Chicken Pineapple Qwzza">Get all Chicken Pineapple Qwzza. change the name get attribute for different results</a></li> 
+    <li>   <a href="' . $base_url . 'match_by_name&name=Potato">Get all recipes with Potato. Change the name get attribute for different results</a></li> 
     </ol>
     ';
 }
