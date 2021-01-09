@@ -3,16 +3,12 @@
 class Processor
 {
     private $data = array();
+    private $search_term = '';
 
     public function __construct($file_data)
     {
         $this->data = $file_data;
     }
-
-    public function sort_data($data, $delimiter)
-    {
-    }
-
 
     public function cleanUp($data)
     {
@@ -55,11 +51,31 @@ class Processor
 
     public function get_busiest_postcode()
     {
-        return $this->data;
+        $dictionary = array();
+        foreach ($this->data as $recipe) {
+            $postcode = $recipe['postcode'];
+            if (array_key_exists($postcode, $dictionary)) {
+                $dictionary[$postcode] = (int) $dictionary[$postcode] + 1;
+            } else {
+                $dictionary[$postcode] = 1;
+            }
+        }
+        arsort($dictionary);
+        $busiest_post_code  = array_keys($dictionary)[0];
+        return array(
+            "postcode" => $busiest_post_code,
+            "delivery_count" => $dictionary[$busiest_post_code]
+        );
     }
 
-    public function match_by_name()
+    public function match_by_name($name)
     {
-        return $this->data;
+        $this->search_term = $name;
+        $found_recipes = array_filter($this->data, function ($value) {
+            return strpos(strtolower($value['recipe']), strtolower($this->search_term));
+        });
+        return array_map(function ($value) {
+            return $value['recipe'];
+        }, array_values($found_recipes));
     }
 }

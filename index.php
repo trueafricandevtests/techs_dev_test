@@ -5,29 +5,40 @@ $data = json_decode($data_reference, true);
 
 $processor = new Processor($data);
 
-?>
+if (isset($_GET['endpoint'])) {
 
+    $endpoint = $_GET['endpoint'];
 
-<html>
+    if ($endpoint === 'count_per_recipe') {
+        echo json_encode(array("count_per_recipe" => $processor->get_count_per_recipe()));
+    }
 
-<body>
-    <h1>Count per recipe</h1>
-    <pre>
-    <?php
-    print_r($processor->get_count_per_recipe());
+    if ($endpoint === 'unique_recipe_count') {
+        echo json_encode($processor->get_unique_recipe_count());
+    }
 
-    ?>
-</pre>
+    if ($endpoint === 'busiest_postcode') {
+        echo json_encode(array("busiest_postcode" => $processor->get_busiest_postcode()));
+    }
 
-
-    <h1>Count per recipe</h1>
-    <pre>
-    <?php
-    print_r($processor->get_unique_recipe_count());
-
-    ?>
-</pre>
-
-</body>
-
-</html>
+    if ($endpoint === 'match_by_name') {
+        if (isset($_GET['name'])) {
+            $name = $_GET['name'];
+            echo json_encode(array("match_by_name" => $processor->match_by_name($name)));
+        } else {
+            echo "Please pass a search term like : domain/index.php?endpoint=match_by_name&name=''";
+        }
+    }
+} else {
+    $base_url = "http://127.0.0.1/techs_dev_test/index.php?endpoint=";
+    echo '
+    <h1>Small Stats API</h1>
+    The list of all the callable endpoints.
+    <ol>
+    <li>   <a href="' . $base_url . 'count_per_recipe">Get count per recipe</a> </li>  
+    <li>   <a href="' . $base_url . 'unique_recipe_count">Get total of unique recipes</a></li> 
+    <li>   <a href="' . $base_url . 'busiest_postcode">Get busiest postcode</a></li> 
+    <li>   <a href="' . $base_url . 'match_by_name&name=Chicken Pineapple Qwzza">Get all Chicken Pineapple Qwzza. change the name get attribute for different results</a></li> 
+    </ol>
+    ';
+}
