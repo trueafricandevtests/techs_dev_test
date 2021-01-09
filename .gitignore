@@ -5,3 +5,4 @@ env/
 */__pycache__/.*
 *.pyc
 *.sql
+output_data.json
