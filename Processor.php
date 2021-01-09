@@ -10,17 +10,6 @@ class Processor
         $this->data = $file_data;
     }
 
-    public function cleanUp($data)
-    {
-        $clean = array();
-        foreach ($data as $key => $count) {
-            $recipe = str_replace('_', ' ', $key);
-            array_push($clean, array("recipe" => $recipe, "count" => $count));
-        }
-        return $clean;
-    }
-
-
     public function get_count_per_recipe()
     {
         $dictionary = array();
@@ -33,7 +22,10 @@ class Processor
                 $dictionary[$key] = 1;
             }
         }
-        return $this->cleanUp($dictionary);
+        return array_map(function ($count, $key) {
+            $recipe = str_replace('_', ' ', $key);
+            return  array("recipe" => $recipe, "count" => $count);
+        }, $dictionary, array_keys($dictionary));
     }
 
 
