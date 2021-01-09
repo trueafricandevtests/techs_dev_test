@@ -30,7 +30,7 @@ if (isset($_GET['endpoint'])) {
         }
     }
 } else {
-    $base_url = "http://127.0.0.1/techs_dev_test/index.php?endpoint=";
+    $base_url = "http://127.0.0.1/index.php?endpoint=";
     echo '
     <h1>Small Stats API</h1>
     The list of all the callable endpoints.
