@@ -62,7 +62,7 @@ def count_recipe(request):
     return render_response({"count_per_recipe": count_per_recipe(resp['recipes']),})
 
 
-@expose('/busiestpostcode')
+@expose('/busiest_postcode')
 def busiest_postcode(request):
     resp=preparedata(request)
     if "Message" in resp:

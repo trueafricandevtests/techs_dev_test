@@ -1,5 +1,5 @@
 # Small Stats API IN Python
-This API has been developed using a `wsgi utility libary werkzeug`  in a package format.
+This API has been developed using a `wsgi utility library werkzeug`  in a package format.
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for testing purposes.
