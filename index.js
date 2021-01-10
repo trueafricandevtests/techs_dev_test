@@ -18,29 +18,29 @@ function saveJosnData(filename, gotData){
 // Main data pool
 const data = loadJsonData('data.json');
 
+// count the number of unique recipe names
 const uniqueNames = new Set();
 data.forEach(recipe => {uniqueNames.add(recipe.recipe)})
 
 console.log(uniqueNames.size)
 // const a = [...uniqueNames]
-// console.log(a)
 
 const uniqueRecipesTosave = {"unique_recipe_count": uniqueNames.size}
 
-// c) sorting alphabetically
-const uniqe = [];
+// b) Coun number of occurrences
+const unique = [];
 const newData = data.map(item => {
     // console.log(item.recipe === "Mediterranean Baked Veggies")
-    if (uniqe.includes(item.recipe)){
+    if (unique.includes(item.recipe)){
         item["count"] += 1
         return item
     } 
-    uniqe.push(item.recipe)
+    unique.push(item.recipe)
     item["count"] = 1
     return  item
 })
 
-// c) highest occurence
+// c) Finding postcode with most delivered recipes
 let mapPostcodes = {}
 let maxValue = 0;
 let maxPostCount = 0;
@@ -70,36 +70,23 @@ const busiest_postcode = {
 }
 
 // d) List recipe names that contain in their name one of the following words
-// console.log(data)
-
-
 const someKeyWords = data.map(keywords => keywords.recipe)
-
-
 const containsRecipes = (string) => {
     let newString = string.split(" ")
     return newString.includes("Potato") || newString.includes("Veggie") || newString.includes("Mushroom") 
 }
 const newMaped = () => someKeyWords.filter(containsRecipes)
-// const keyWordFind =(Potato, Veggie, Mushroom) => {
-//     someKeyWords.some(
-//         recipeName => recipeName.recipe === Potato || recipeName.recipe === Veggie ||  recipeName.recipe === Mushroom )
-// }
 
 const ListOfRecipeWords = {
     "match_by_name": newMaped().sort()
 }
 
-// console.log(ListOfRecipeWords)  
+// outputs
+saveJosnData('uniqueRecipes.json',uniqueRecipesTosave)        // counts number of recipe names
+saveJosnData('numberOfOccurrence.json', newData)              // counts number of occurences of @unique recipe
+saveJosnData('busiest_postcode.json', busiest_postcode)      // Finds postcode with most delivered recipes
+saveJosnData('keyWordList.json', ListOfRecipeWords)          // Listing of recipe names that match
 
 
-// Display what is unique and the length
-// console.log(uniqe, uniqe.length)
-
-saveJosnData('mydata.json',uniqueRecipesTosave)
-saveJosnData('sortedItems.json', newData)
-saveJosnData('busiest_postcode.json', busiest_postcode)
-saveJosnData('keyWordList.json', ListOfRecipeWords)
-
-
-
+// const xc = {...uniqueRecipesTosave, ...newData, ...busiest_postcode, ...ListOfRecipeWords}
+// saveJosnData('all.json', xc)
