@@ -98,3 +98,20 @@ __General criteria from most important to less important__:
 4. Tests showcased are a plus (_no need to cover everything_).
 5. Supporting notes on taken decisions and further clarifications are welcome.
 6. Avoid use of web frameworks. 
+
+Setup instructions
+-----
+
+1. With docker installed (Go to [Here](https://www.docker.com/) to install docker if not installed)
+2. To build app docker image run 
+```docker build -t true_dev .
+```
+3. On successful image build, then, we can check the image is in the local image store:
+```docker images
+```
+4. After writing the Dockerfile and building the image from it,  we can run the container with Python service
+```docker run -d -p 5000:5000 true_dev
+```
+5. We now containerized our app server and we can query the port mapped to localhost.
+```docker ps
+```
