@@ -1,0 +1,27 @@
+{
+  "name": "techs_dev_test",
+  "version": "1.0.0",
+  "description": "Small Stats API ====",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js --trace-warnings",
+    "test": "node __tests__/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trueafricandevtests/techs_dev_test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trueafricandevtests/techs_dev_test/issues"
+  },
+  "homepage": "https://github.com/trueafricandevtests/techs_dev_test#readme",
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "formidable": "^1.2.2"
+  }
+}
