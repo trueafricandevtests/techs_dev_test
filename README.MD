@@ -1,24 +1,20 @@
-# Small Stats API
-This API has been developed using a `wsgi utility libary werkzeug in Python`  in a package format.
+# Small Stats API IN Python
+This API has been developed using a `wsgi utility libary werkzeug`  in a package format.
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for testing purposes.
 
-After merging the pull reques and pulling the code into your local machine, use the following commands to start the api
-## 1
+After merging the pull request and pulling the code into your local machine, use the following commands to start the api
+
 ```pip install python venv```
-### 2
 ```py -m venv env```
-#### 3
 On Windows, run: ```env\Scripts\activate```
 On Unix or MacOS, run: ```source env/bin/activate```
-##### 4
 Then run ```pip install -r requirements.txt```
 After installing the dependencies run the following command ```python run.py```
-###### 5
-After the development server starting head to ```http://127.0.0.1:5000/```
+ment server starting head to ```http://127.0.0.1:5000/```
 
-###### 6 Endponts for querying
+## Endponts for querying
 Method | Endpoint | Functionality
 --- | --- | ---
 GET | `/` | List the endpoints
