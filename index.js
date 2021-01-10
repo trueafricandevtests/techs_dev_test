@@ -83,7 +83,7 @@ const ListOfRecipeWords = {
 
 // outputs
 saveJosnData('uniqueRecipes.json',uniqueRecipesTosave)        // counts number of recipe names
-saveJosnData('numberOfOccurrence.json', newData)              // counts number of occurences of @unique recipe
+saveJosnData('numberOfOccurrence.json', newData)              // counts number of occurences of each unique recipe
 saveJosnData('busiest_postcode.json', busiest_postcode)      // Finds postcode with most delivered recipes
 saveJosnData('keyWordList.json', ListOfRecipeWords)          // Listing of recipe names that match
 
