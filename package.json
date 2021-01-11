@@ -1,0 +1,25 @@
+{
+  "name": "techs_dev_test",
+  "version": "1.0.0",
+  "description": "Small Stats API ====",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbabaliiryn/techs_dev_test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbabaliiryn/techs_dev_test/issues"
+  },
+  "homepage": "https://github.com/mbabaliiryn/techs_dev_test#readme",
+  "devDependencies": {
+    "webpack": "^5.12.3",
+    "webpack-cli": "^4.3.1"
+  }
+}
