@@ -20,7 +20,7 @@ def preparedata(request):
         recipes.append(data['recipe'])
         postcodes.append(data['postcode'])
 
-    return {"recipes":recipes, "postcodes":postcodes}
+    return {"recipes":recipes, "postcodes":postcodes, "filter":filter_list}
 
 @expose('/')
 def instructions(request):
@@ -79,7 +79,7 @@ def custom_recipe_search(request):
     resp=preparedata(request)
     if "Message" in resp:
         return render_response(resp)
-    return render_response({"match_by_name": recipe_matcher(resp['recipes'])})
+    return render_response({"match_by_name": recipe_matcher(resp['recipes'],resp['filter'])})
 
 
 #Resources
