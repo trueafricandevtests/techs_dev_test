@@ -32,7 +32,7 @@ type recipe struct {
 }
 
 func getUnique(w http.ResponseWriter, r *http.Request) {
-	jsonResult := readJSONFile()
+	jsonResult := readJSONFile("./data.json")
 	count := improvedUniqueRecipeNamesCounter(jsonResult)
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/json")
@@ -43,7 +43,7 @@ func getUnique(w http.ResponseWriter, r *http.Request) {
 }
 
 func reciepeCounter(w http.ResponseWriter, r *http.Request) {
-	jsonResult := readJSONFile()
+	jsonResult := readJSONFile("./data.json")
 	receipeResult := recipeCountMap(jsonResult)
 
 	w.WriteHeader(http.StatusOK)
@@ -54,7 +54,7 @@ func reciepeCounter(w http.ResponseWriter, r *http.Request) {
 }
 
 func busyPostCode(w http.ResponseWriter, r *http.Request) {
-	jsonResult := readJSONFile()
+	jsonResult := readJSONFile("./data.json")
 	postcodes := busiestPostCode(jsonResult)
 
 	w.WriteHeader(http.StatusOK)
@@ -66,7 +66,7 @@ func busyPostCode(w http.ResponseWriter, r *http.Request) {
 }
 
 func getByName(w http.ResponseWriter, r *http.Request) {
-	jsonResult := readJSONFile()
+	jsonResult := readJSONFile("./data.json")
 	query := r.URL.Query()
 	filters, ok := query["name"];
 	if !ok {
@@ -84,8 +84,8 @@ type kv struct {
 	Value int `json:"delivery_count"`
 }
 
-func readJSONFile() []Resturant {
-	data, err := ioutil.ReadFile("./data.json")
+func readJSONFile(path string) []Resturant {
+	data, err := ioutil.ReadFile(path)
 	if err != nil {
 		fmt.Println(err)
 	}
