@@ -98,3 +98,22 @@ __General criteria from most important to less important__:
 4. Tests showcased are a plus (_no need to cover everything_).
 5. Supporting notes on taken decisions and further clarifications are welcome.
 6. Avoid use of web frameworks. 
+
+
+How to test
+---
+1. run `./build_docker.sh` or run `docker build -t stats .`
+2. run `./start_docker_container.sh` or run `docker run --rm -p 9005:9005 stats`
+3. Query endpoints for results:
+ ```
+ $ curl localhost:9005/recipeCounter
+ ```
+ ```
+ $ curl localhost:9005/getname?name=veggie
+ ```
+ ```
+ $ curl localhost:9005/busypostcode
+ ```
+ ```
+ $ curl localhost:9005/unique
+ ```
