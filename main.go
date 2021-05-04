@@ -90,7 +90,7 @@ func readJSONFile(path string) []Resturant {
 		fmt.Println(err)
 	}
 
-	fmt.Println("Successfully opened file")
+	// fmt.Println("Successfully opened file")
 
 	var result []Resturant
 	err = json.Unmarshal(data, &result)

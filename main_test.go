@@ -41,3 +41,16 @@ func TestReceipeContains(t *testing.T) {
 		t.Errorf("Wanted %v got %v", want , count)
 	}
 }
+
+func TestReceipeContainsWithList(t *testing.T) {
+	results := readJSONFile("./data_test.json")
+	count := 0
+	got := receipeContains([]string{"Potato","Veggie", "Mushroom"},results)
+	for range got {
+		count++
+	}
+	want := 0
+	if count != want {
+		t.Errorf("Wanted %v got %v", want , count)
+	}
+}
